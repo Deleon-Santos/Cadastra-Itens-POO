@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import ttk
-import conexao_bd as bd
+import Conexao_bd as bd
 
 class Produto:
     def __init__(self, id, descricao, preco, qtd_cx):
@@ -16,9 +16,10 @@ class Pedido:
 
     def adicionar(self, produto):
         #try:
-            self.listaPedido.append(produto)
-            
-            bd.conectar_bd(produto)
+           
+        bd.criar_tabela(produto)   
+        self.listaPedido.append(bd.ler_bd().copy())
+        
           
         
 class App:
@@ -78,13 +79,15 @@ class App:
         #conexao = self.conector()
         
         if descricao and preco and qtd:
+            
             try:
                 preco = float(preco)
                 qtd = int(qtd)
-                self.id_counter += 1
+                id = bd.pega_id()+1
+                
 
-                produto = Produto(self.id_counter, descricao, preco, qtd)
-                self.pedido.adicionar(produto)
+                produto = Produto(id, descricao, preco, qtd)
+                self.pedido.listaPedido.append(produto)
 
                 self.limpar_campos()
 
@@ -114,9 +117,10 @@ class App:
     
             
 if __name__ == "__main__":
-    ctk.set_appearance_mode("System")
+    ctk.set_appearance_mode("light")
     ctk.set_default_color_theme("blue")
 
     janela = ctk.CTk()
     app = App(janela)
     janela.mainloop()
+#cd C:/Users/Leon/OneDrive/Área\ de\ Trabalho/Cadastra\ Itens\ POO
