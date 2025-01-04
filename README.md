@@ -1,5 +1,5 @@
 ## Gerenciador de Produtos em Python
-![Descrição da imagem](poo.png)
+![Descrição da imagem](poo.png.png)
 ### Descrição
 Este projeto Python cria uma aplicação desktop simples para gerenciar um cadastro de produtos. A interface gráfica é desenvolvida utilizando a biblioteca CustomTkinter, facilitando a criação de interfaces modernas e personalizadas. A persistência dos dados é realizada através de um banco de dados (implementação específica no módulo `Conexao_bd`).
 
